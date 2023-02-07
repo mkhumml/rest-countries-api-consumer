@@ -7,9 +7,9 @@ type Props = {}
 
 const Header = (props: Props) => {
     return (
-        <div className="dark:bg-elementsDark">
-            <div className='flex justify-between items-center mx-auto py-6' style={{ maxWidth: "1440px" }}>
-                <h1>Where in the world?</h1>
+        <div className="dark:bg-elementsDark shadow-md">
+            <div className='flex justify-between items-center md:mx-auto mx-6 py-6' style={{ maxWidth: "1440px" }}>
+                <h1 className='hover:cursor-pointer' onClick={() => window.location.reload()}>Where in the world?</h1>
                 <ThemeSwitcher />
             </div>
         </div>

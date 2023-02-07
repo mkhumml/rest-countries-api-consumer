@@ -3,13 +3,18 @@ import FilterDropdown from './FilterDropdown/FilterDropdown'
 import SearchInput from './SearchInput/SearchInput'
 
 
-type Props = {}
+type Props = {
+    searchInput: string | undefined;
+    setSearchInput: Function;
+    filter: string | undefined;
+    setFilter: Function;
+}
 
-const SearchControls = (props: Props) => {
+const SearchControls = ({ filter, setFilter, searchInput, setSearchInput }: Props) => {
     return (
-        <div className='flex justify-between py-4'>
-            <SearchInput />
-            <FilterDropdown />
+        <div className='flex flex-col md:flex-row md:justify-between py-4'>
+            <SearchInput searchInput={searchInput} setSearchInput={setSearchInput} />
+            <FilterDropdown filter={filter} setFilter={setFilter} />
         </div>
     )
 }

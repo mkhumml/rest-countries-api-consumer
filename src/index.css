@@ -13,8 +13,17 @@
   font-family: "Rubik", italic;
 }
 
+b {
+  font-weight: bold;
+}
+
+p {
+  line-height: 2.25rem;
+  font-size: 1rem;
+}
+
 #root {
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 300;
 }
 
@@ -25,5 +34,10 @@ h1 {
 
 h2 {
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 800;
 }

@@ -21,8 +21,17 @@ module.exports = {
     },
     extend: {
       rounded: {
-        dropdown: "1em"
-      }
+        dropdown: "1em",
+      },
+      gap: {
+        cards: "2.66rem",
+      },
+      minHeight: {
+        detailImg: "384px",
+      },
+      boxShadow: {
+        filterDropdown: "0px 2px 5px 0px rgb(0 0 0 / 50%)",
+      },
     },
   },
   plugins: [],

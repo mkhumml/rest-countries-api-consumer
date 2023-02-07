@@ -1,41 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import Data from '../../../../data.json'
-// for dropdown
+import { useState } from 'react'
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import useFetch from '../../../../hooks/useFetch';
+import { FilterDropdownData } from '../../../../utils/FilterDropdownData';
 import FilterDropdownElement from './FilterDropdownElement/FilterDropdownElement';
+import { Country } from '../../../../Interfaces/CountryInterfaces';
 
-type Props = {}
+type Props = {
+    filter: string | undefined;
+    setFilter: Function;
+}
 
-const FilterDropdown = (props: Props) => {
+const FilterDropdown = ({ filter, setFilter }: Props) => {
+    const defaultValue = 'Filter by Region';
     const [show, setShow] = useState(false)
-    const [buttonValue, setButtonValue] = useState('Filter by Region');
-
+    const { data } = useFetch<Country[]>('https://restcountries.com/v2/all');
 
     const regionSelected = (e: any) => {
-        setButtonValue(e.target.innerHTML)
+        setFilter((prev: string) => prev === e.target.innerHTML ? undefined : e.target.innerHTML)
         setShow(!show)
     }
 
-    let fitleredData: string[] = [];
-
-    Data.forEach(data => {
-        console.log(data.region)
-        if (!fitleredData.includes(data.region)) {
-            fitleredData.push(data.region)
-        }
-
-    });
-
-    console.log(fitleredData);
-
     return (
-        <div className='min-w-min w-56 relative rounded-md'>
-            <button onClick={() => setShow(!show)} className='flex items-center rounded-md px-8 py-4 dark:bg-elementsDark w-full text-left justify-between'>
-                {buttonValue}
+        <div className='min-w-min w-56 relative rounded-md shadow-md'>
+            <button onClick={() => setShow(!show)} className='flex items-center rounded-md px-8 py-4 bg-elements dark:bg-elementsDark w-full text-left justify-between'>
+                {filter ? filter : defaultValue}
                 {show === true ? <FaAngleUp /> : <FaAngleDown />}
             </button>
-            <div className='absolute z-10 rounded-md mt-1 w-full'>
-                {fitleredData.map((e, index) => <FilterDropdownElement data={e} key={index} show={show} regionSelected={regionSelected} />)}
+            <div className='absolute z-10 rounded-md mt-1 w-full bg-elements shadow-filterDropdown'>
+                {FilterDropdownData(data ? data : []).map((e, index) => <FilterDropdownElement data={e} key={index} show={show} regionSelected={regionSelected} />)}
             </div>
         </div>
     )
