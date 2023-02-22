@@ -29,6 +29,9 @@ module.exports = {
       minHeight: {
         detailImg: "384px",
       },
+      minWidth: {
+        cardResponsive: "366px"
+      },
       boxShadow: {
         filterDropdown: "0px 2px 5px 0px rgb(0 0 0 / 50%)",
       },

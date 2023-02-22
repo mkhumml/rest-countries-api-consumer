@@ -1,5 +1,4 @@
 import { Country, Language, Currency } from '../../Interfaces/CountryInterfaces'
-// backarrow for detailpage
 import { FaArrowLeft } from 'react-icons/fa';
 
 type Props = {
@@ -10,7 +9,7 @@ type Props = {
 const Detail = ({ detail, setDetail }: Props) => {
     return (
         <div className='flex flex-col'>
-            <div className='my-4 md:my-8 w-full'>
+            <div className='m-4 md:mx-0 md:my-8'>
                 <button
                     onClick={() => setDetail(undefined)}
                     className='flex items-center rounded-md px-8 shadow-filterDropdown mx-3 md:mx-0 py-2 dark:bg-elementsDark text-left justify-between first:mr-2'>
@@ -22,7 +21,7 @@ const Detail = ({ detail, setDetail }: Props) => {
                 <div className='flex-grow basis-1/2 mb-8 md:mb-0'>
                     <img className='w-full md:pr-12 max-w-2xl md:min-h-detailImg max-h-96' src={detail.flags?.png} alt={detail.name + "-img"} />
                 </div>
-                <div className='flex-grow flex-col mx-4 md:flex-row basis-1/2 md:pl-12 md:mx-0'>
+                <div className='flex-grow flex-col mx-8 md:flex-row basis-1/2 md:pl-12 md:mx-0'>
                     <h3 className=''>{detail.name}</h3>
                     <div className='flex flex-col md:flex-row my-8 justify-between'>
                         <div>
